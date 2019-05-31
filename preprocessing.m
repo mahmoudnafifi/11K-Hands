@@ -15,11 +15,12 @@
 
 function O=  preprocessing(I)
 
-I=double(I)/255;
+I=im2double(I);
 low=imguidedfilter(I,'DegreeOfSmoothing',100,'NeighborhoodSize',[10,10]);
 glow=rgb2gray(low);
 high=imadjust((rgb2gray(I)+(eps/100))./(glow+(eps/100)));
 low=imresize(low,[224,224]);
 high=imresize(high,[224,224]);
 O=zeros(224,224,4); O(:,:,1:3)=low; O(:,:,4)=high;
+O = uint8(O*255);
 end
