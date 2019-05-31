@@ -1,22 +1,12 @@
 # 11K Hands: Gender recognition and biometric identification using a large dataset of hand images
 
+<p align="center"><img src="https://drive.google.com/uc?export=view&id=0BwO0RMrZJCioY0tCYkZRUjY1bm8" style="width: 300px; max-width: 90%; height: auto" title="Click for the larger version." /></p>
+
 This is the Matlab implementation of the paper:
 Mahmoud Afifi, "11K Hands: Gender recognition and biometric identification using a large dataset of hand images." Multimedia Tools and Applications, 2019.
 
-Copyright (c) 2019 Mahmoud Afifi
-York University - Assiut University
+[Project webpage](https://sites.google.com/view/11khands)
 
-Permission is hereby granted, free of charge, to any person obtaining  a copy of this software and associated documentation files (the "Software"), to deal in the Software with restriction for its use for research purpose only, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-The Software is provided "as is", without warranty of any kind.
-
-Please cite the following work if you use the provided source code, pre-trained models, or the dataset:
-Mahmoud Afifi, "11K Hands: Gender recognition and biometric identification using a large dataset of hand images." Multimedia Tools and Applications, 2019.
-
-Project webpage: https://sites.google.com/view/11khands
---------------------------------------------------------------------------------------------------
 
 To run this code, you need to download the trained models using download_trained_models.m or download them from our website:
 
@@ -49,23 +39,26 @@ a- Open Matlab  (run as administrator)
 
 b- Write:
 
->> edit imageInputLayer.m
+`edit imageInputLayer.m`
 
 c- Replace the following code:
-
+```
 function tf = iIsValidRGBImageSize(sz)
 tf = numel(sz) == 3 && sz(end) == 3;
 end
-
+```
 with the modified function:
-
+```
 function tf = iIsValidRGBImageSize(sz)
 tf = numel(sz) == 3 && (sz(end) == 3 || sz(end) == 4);
 end
-
+```
 d- Save 
 
 
 --------------------------------------------------------------------------------------------------
 
 Project webpage: https://sites.google.com/view/11khands
+
+### Publication:
+Mahmoud Afifi, "11K Hands: Gender recognition and biometric identification using a large dataset of hand images." Multimedia Tools and Applications, 2019.
