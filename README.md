@@ -82,7 +82,7 @@ Please follow the following steps to re-produce our results for biometric identi
 
 5. Download the IDs for experiments from [here](https://drive.google.com/drive/folders/0BwO0RMrZJCioZTNTdThFUGh5bG8). In this example, we are interested in experiment #1 for 100 subjcts.
 
-6. Download this [Matlab code](https://drive.google.com/file/d/0BwO0RMrZJCioWEhLMWhYMVgtdGc/view) that automatically extracts images for each experiment. You can modify it to only extract images for experiment 1. Do not forget to change the directory in the code to the directory you saved hand images in. It will create for you a directory named `identification`.
+6. Run `get_data_identification.m` code (also is available [here](https://drive.google.com/file/d/0BwO0RMrZJCioWEhLMWhYMVgtdGc/view)) that automatically extracts images for each experiment. You can modify it to only extract images for experiment 1. Do not forget to change the directory in the code to the directory you saved hand images in. It will create for you a directory named `identification`.
 
 Now, we have everything. So, let's test experiment 1 (100 subjects) for dorsal-side images.
 
