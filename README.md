@@ -8,9 +8,9 @@ Mahmoud Afifi, "11K Hands: Gender recognition and biometric identification using
 [Project webpage](https://sites.google.com/view/11khands)
 
 
-To run this code, you need to download the trained models using download_trained_models.m or download them from our website:
+To run this code, you need to download the trained models from our [project webpage](https://sites.google.com/view/11khands). The provided files include models for gender classification and biometric identification.
 
-The provided files are:
+Gender classification files are:
 
 1. demo.m: a demo to test our model.
 2. get_data.m: extract training and testing images from the main directory of the hand images.
@@ -26,6 +26,19 @@ The provided files are:
 12. getfeatures.m: return the CNN features and LBP features required for the SVM training process.
 13. get_all_features.m: extract features from all images to feed the SVM classifier in the SVM training process.
 14. SVM_d_9.m and SVM_p_2.m: is the trained SVM classifiers to be used in the demo.m
+
+
+Biometric classification files are:
+1. preprocessing.m: return 4-D image contains the smoothed version of the image in the first 3 layers and the detail layer in the fourth layer of the image. 
+2. Apply_preprocessing_to_all.m: to apply our preprocessing to all images before train.
+3. getfeatures.m: return the CNN features and LBP features required for the training process.
+4. get_all_features.m: extract features from all images to feed the SVM classifier in the SVM training process.
+5. get_data_identification.m: extract training and testing images from the main directory of the hand images. You have to first use get_all_features.m to get all features from images, then use this code to extract all training/testing sets of the features not the images.
+6. training_ID.m: train SVM classifiers (it loops through all sets described in the paper)
+7. get_fnames_ids.m: get file names and ids for train SVM classifiers.
+8. test.m: to test a particular classifier. You can download them from our webpage.
+Run steps 2, 4, 5, then 6 to re-train the SVM classifiers.
+
 
 Note:
 Because of the 4-D images, you are going to get an error states the following:
@@ -55,6 +68,46 @@ end
 ```
 d- Save 
 
+
+
+### Example of testing biometric identification
+Please follow the following steps to re-produce our results for biometric identification.
+1. Download source code for biometric identification. Also can be found [here](https://drive.google.com/file/d/1Fmk1KCbIzSfQVGsISwFUwhp2HykGE43R/view).
+
+2. Download the dataset from our [project webpage](https://sites.google.com/view/11khands) (a direct download link is available [here](https://drive.google.com/file/d/0BwO0RMrZJCiocGlvdnJxb0lTaHM/view)).
+
+3. Download the trained CNN model. Assume we are interested in dorsal-side hand images, so download the trained model for dorsal images from [here](https://drive.google.com/file/d/0Byh0abzpiSu5ZmNtR1pMeWl3UnM/view).
+
+4. Download the SVM trained classifier (it should be for the same side). Here we will use an SVM classifier for dorsal images without LBP features for Experiment #1 for 100 subjects (for more information please read our paper or see the [project webpage](https://sites.google.com/view/11khands)). The SVM model is available [here](https://drive.google.com/file/d/0B6CktEG1p54WTk5EX0RqQlRqS2s/view).
+
+5. Download the IDs for experiments from [here](https://drive.google.com/drive/folders/0BwO0RMrZJCioZTNTdThFUGh5bG8). In this example, we are interested in experiment #1 for 100 subjcts.
+
+6. Download this [Matlab code](https://drive.google.com/file/d/0BwO0RMrZJCioWEhLMWhYMVgtdGc/view) that automatically extracts images for each experiment. You can modify it to only extract images for experiment 1. Do not forget to change the directory in the code to the directory you saved hand images in. It will create for you a directory named `identification`.
+
+Now, we have everything. So, let's test experiment 1 (100 subjects) for dorsal-side images.
+
+7. Load trained CNN
+8. Load trained classifier
+9. Run this code:
+```
+	base = 'identification\1\testing_dorsal\100'; %that is the base directory for experiment1 testing images
+	images = dir(fullfile(base,'*.jpg')); %get all image names
+	images = {images(:).name}; %convert them to cell (just easier in future use)
+	acc= 0; %set accuracy to 0
+	for i = 1 : length(images) %for each image
+		I = imread(fullfile(base,images{i})); %read it
+		ID = test( I, net, Classifier,false); %get predicted ID
+		parts = strsplit(images{i},'_');  %each image name has the following format ID_originalImageName.jpg
+		ID_gt = parts{1} ; %get the ground truth ID (the part before first underscore)
+		if strcmpi(ID_gt,ID{1}) %if ground truth match predicted ID, increment the accuracy
+			acc = acc + 1;
+		end
+	end
+
+	acc = acc/length(images) %report the accuracy (total true predictions over total number of images)
+```
+
+It should give you 0.9646 ~ 0.965 (as reported in the project webpage and our paper). 
 
 --------------------------------------------------------------------------------------------------
 
