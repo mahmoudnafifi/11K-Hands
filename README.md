@@ -114,4 +114,21 @@ It should give you 0.9646 ~ 0.965 (as reported in the project webpage and our pa
 Project webpage: https://sites.google.com/view/11khands
 
 ### Publication:
+
+If you use this code or our dataset, please cite our paper:
+
+
 Mahmoud Afifi, "11K Hands: Gender recognition and biometric identification using a large dataset of hand images." Multimedia Tools and Applications, 2019.
+
+```
+@article{afifi201911k,
+  title={11K Hands: gender recognition and biometric identification using a large dataset of hand images},
+  author={Afifi, Mahmoud},
+  journal={Multimedia Tools and Applications},
+  volume={78},
+  number={15},
+  pages={20835--20854},
+  year={2019},
+  publisher={Springer}
+}
+```
