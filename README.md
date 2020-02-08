@@ -74,7 +74,7 @@ d- Save
 Please follow the following steps to re-produce our results for biometric identification.
 1. Download source code for biometric identification. Also can be found [here](https://drive.google.com/file/d/1Fmk1KCbIzSfQVGsISwFUwhp2HykGE43R/view).
 
-2. Download the dataset from our [project webpage](https://sites.google.com/view/11khands) (a direct download link is available [here](https://drive.google.com/file/d/0BwO0RMrZJCiocGlvdnJxb0lTaHM/view)).
+2. Download the dataset from our [project webpage](https://sites.google.com/view/11khands) (a direct download link is available [here](https://drive.google.com/open?id=1KcMYcNJgtK1zZvfl_9sTqnyBUTri2aP2)).
 
 3. Download the trained CNN model. Assume we are interested in dorsal-side hand images, so download the trained model for dorsal images from [here](https://drive.google.com/file/d/0Byh0abzpiSu5ZmNtR1pMeWl3UnM/view).
 
