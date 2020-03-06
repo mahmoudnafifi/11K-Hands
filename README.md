@@ -1,6 +1,6 @@
 # 11K Hands: Gender recognition and biometric identification using a large dataset of hand images
 
-<p align="center"><img src="https://drive.google.com/uc?export=view&id=0BwO0RMrZJCioY0tCYkZRUjY1bm8" style="width: 300px; max-width: 90%; height: auto" title="Click for the larger version." /></p>
+![two-stream-arch](https://user-images.githubusercontent.com/37669469/76105201-817cc580-5fa2-11ea-8704-9bb82d24ce30.jpg)
 
 This is the Matlab implementation of the paper:
 Mahmoud Afifi, "11K Hands: Gender recognition and biometric identification using a large dataset of hand images." Multimedia Tools and Applications, 2019.
